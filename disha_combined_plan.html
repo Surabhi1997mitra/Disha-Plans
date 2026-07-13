@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#2b241f">
+<title>Disha — Diet & Workout Plan</title>
+<style>
+:root {
+  --serif: 'Georgia', 'Times New Roman', serif;
+  --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --ink: #2b241f; --ink-mid: #5c5248; --ink-soft: #9c9187;
+  --paper: #faf6f0; --warm: #f2e9da;
+  --teal: #1a6b5a; --teal-soft: #e6f4f1;
+  --brick: #b5652c; --brick-soft: #fbeee0;
+  --info: #1d56c4; --info-soft: #eef3fd;
+  --border: #e6dccc;
+  --nav: 60px;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;background:var(--paper)}
+body{font-family:var(--sans);color:var(--ink);font-size:15px;line-height:1.7;padding-bottom:calc(var(--nav) + 12px)}
+
+/* BOTTOM NAV */
+.bnav{position:fixed;bottom:0;left:0;right:0;height:var(--nav);background:#1f1a15;display:flex;z-index:999;border-top:1px solid rgba(255,255,255,0.07);box-shadow:0 -4px 20px rgba(0,0,0,0.25)}
+.bnav a{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-decoration:none;color:rgba(255,255,255,0.38);font-size:9px;letter-spacing:0.06em;text-transform:uppercase;font-family:var(--sans);transition:color 0.15s;padding-bottom:env(safe-area-inset-bottom,0px)}
+.bnav-icon{font-size:18px;line-height:1}
+
+/* COVER */
+#cover{background:var(--ink);color:#fff;padding:52px 22px 52px;position:relative;overflow:hidden}
+#cover::before{content:'';position:absolute;top:-60px;right:-60px;width:260px;height:260px;border-radius:50%;border:1px solid rgba(255,255,255,0.05);pointer-events:none}
+#cover::after{content:'';position:absolute;bottom:-40px;left:20%;width:180px;height:180px;border-radius:50%;border:1px solid rgba(255,255,255,0.03);pointer-events:none}
+.cover-eyebrow{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:18px}
+.cover-name{font-family:var(--serif);font-size:48px;line-height:1.05;margin-bottom:14px;font-weight:400}
+.cover-name em{color:#6BAF9B;font-style:italic}
+.cover-sub{font-size:14px;color:rgba(255,255,255,0.45);line-height:1.7;margin-bottom:28px;max-width:300px}
+.cover-pills{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:28px}
+.cpill{font-size:11px;padding:4px 11px;border-radius:20px;border:1px solid rgba(255,255,255,0.14);color:rgba(255,255,255,0.55)}
+.cover-coach{font-family:var(--serif);font-size:18px;font-style:italic;color:rgba(255,255,255,0.5)}
+.cover-role{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.22);margin-top:3px}
+
+/* SECTION STRUCTURE */
+.sec-anchor{display:block}
+.ph{padding:28px 20px 16px;border-bottom:1px solid var(--border);background:var(--paper)}
+.ph-eye{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal);margin-bottom:6px}
+.ph-title{font-family:var(--serif);font-size:27px;font-weight:400;line-height:1.15;color:var(--ink)}
+.cx{padding:18px 16px}
+
+/* CARDS */
+.card{background:#fff;border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:12px}
+.card.hi{border-color:var(--teal);border-width:2px}
+.ch{padding:13px 15px;background:var(--warm);border-bottom:1px solid var(--border)}
+.ch.teal{background:var(--teal-soft)}
+.ch.brick{background:var(--brick-soft)}
+.ch.info{background:var(--info-soft)}
+.ch.dark{background:#1f1a15}
+.ct{font-weight:500;font-size:14px;line-height:1.4}
+.ch.teal .ct{color:var(--teal)}
+.ch.brick .ct{color:var(--brick)}
+.ch.info .ct{color:var(--info)}
+.ch.dark .ct{color:#fff}
+.cm{font-size:11px;color:var(--ink-soft);margin-top:3px}
+.ch.dark .cm{color:rgba(255,255,255,0.4)}
+.cb{padding:13px 15px;font-size:13.5px;color:var(--ink-mid);line-height:1.8}
+
+/* ALERTS */
+.al{border-radius:10px;padding:12px 14px;margin-bottom:11px;font-size:13.5px;line-height:1.7}
+.al.ok{background:var(--teal-soft);border-left:3px solid var(--teal);color:#0d3d30}
+.al.w{background:var(--brick-soft);border-left:3px solid var(--brick);color:#6b3d10}
+.al.i{background:var(--info-soft);border-left:3px solid var(--info);color:#1a3a8a}
+.al b,.al strong{font-weight:600}
+
+/* NOTES */
+.nt{border-radius:8px;padding:9px 11px;margin-top:10px;font-size:12.5px;line-height:1.65}
+.nt.ok{background:var(--teal-soft);color:#0d3d30}
+.nt.w{background:var(--brick-soft);color:#6b3d10}
+.nt.i{background:var(--info-soft);color:#1a3a8a}
+
+/* BADGES */
+.bx{display:inline-block;font-size:9.5px;font-weight:600;padding:2px 7px;border-radius:20px;margin-left:4px;vertical-align:middle}
+.bx.ok{background:var(--teal);color:#fff}
+.bx.w{background:var(--brick);color:#fff}
+.bx.i{background:var(--info);color:#fff}
+.bx.new{background:#1f1a15;color:#fff}
+
+/* STATS GRID */
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:14px}
+.stats.three{grid-template-columns:1fr 1fr 1fr}
+.st{background:var(--paper);padding:14px 12px}
+.stl{font-size:10px;color:var(--ink-soft);letter-spacing:0.03em;margin-bottom:3px}
+.stv{font-family:var(--serif);font-size:21px;color:var(--ink);line-height:1}
+.stu{font-size:10px;color:var(--ink-soft);margin-top:2px}
+.st.tl{background:var(--teal-soft)}.st.tl .stv{color:var(--teal)}
+.st.br{background:var(--brick-soft)}.st.br .stv{color:var(--brick)}
+
+/* TABLE ROWS */
+.tr{border-bottom:1px solid var(--border);padding:13px 15px}
+.tr:last-child{border-bottom:none}
+.trm{font-size:10px;font-weight:600;color:var(--ink-soft);letter-spacing:0.04em;text-transform:uppercase;margin-bottom:3px}
+.trv{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:3px}
+.trd{font-size:12.5px;color:var(--ink-mid);line-height:1.6}
+
+/* SNACKS */
+.snk{background:var(--warm);border:1px solid var(--border);border-radius:12px;padding:13px 14px;margin-bottom:10px}
+.snkn{font-weight:600;font-size:14px;color:var(--ink);margin-bottom:5px}
+.snkb{font-size:13px;color:var(--ink-mid);line-height:1.7;margin-bottom:5px}
+.snkm{font-size:11px;color:var(--ink-soft)}
+
+/* INVEST CARD */
+.invest-item{background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px 15px;margin-bottom:10px;display:flex;gap:13px;align-items:flex-start}
+.invest-icon{font-size:26px;flex-shrink:0;margin-top:2px}
+.invest-name{font-weight:600;font-size:14px;color:var(--ink);margin-bottom:3px}
+.invest-desc{font-size:12.5px;color:var(--ink-mid);line-height:1.6;margin-bottom:6px}
+
+/* SECTION LABELS */
+.div{height:1px;background:var(--border);margin:22px 0}
+.slbl{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal);margin-bottom:7px}
+.stit{font-family:var(--serif);font-size:21px;font-weight:400;line-height:1.2;margin-bottom:13px}
+
+/* MACRO BAR */
+.macro-bar{margin:14px 0 6px}
+.macro-bar-label{display:flex;justify-content:space-between;font-size:11px;color:var(--ink-soft);margin-bottom:5px}
+.macro-bar-track{height:6px;background:var(--border);border-radius:10px;overflow:hidden;display:flex;gap:2px}
+.mb-p{background:#1a6b5a;height:100%;border-radius:10px}
+.mb-c{background:#1d56c4;height:100%;border-radius:10px}
+.mb-f{background:#c17f24;height:100%;border-radius:10px}
+.macro-legend{display:flex;gap:12px;margin-top:6px;flex-wrap:wrap}
+.ml-item{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--ink-soft)}
+.ml-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+/* WEEK STRIP */
+.week-strip{display:grid;grid-template-columns:repeat(7,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:16px}
+.wday{background:var(--paper);padding:12px 3px;text-align:center}
+.wday.up{background:#1f1a15}
+.wday.low{background:var(--info-soft)}
+.wday.yog{background:var(--teal-soft)}
+.wday.rest{background:var(--warm)}
+.wd-name{font-size:9px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:5px}
+.wday.up .wd-name{color:rgba(255,255,255,0.4)}
+.wd-icon{font-size:16px;margin-bottom:3px}
+.wd-label{font-size:9.5px;font-weight:600;color:var(--ink);line-height:1.3}
+.wday.up .wd-label{color:#e8b98a}
+.wday.low .wd-label{color:var(--info)}
+.wday.yog .wd-label{color:var(--teal)}
+.wday.rest .wd-label{color:var(--ink-soft)}
+
+/* EXERCISE ROWS */
+.ex-row{border-bottom:1px solid var(--border);padding:11px 15px;display:flex;gap:12px;align-items:flex-start}
+.ex-row:last-child{border-bottom:none}
+.ex-n{width:22px;height:22px;border-radius:6px;background:var(--warm);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:11px;font-weight:600;color:var(--ink-soft);flex-shrink:0;margin-top:2px}
+.ex-row.fire .ex-n{background:#1f1a15;color:#e8b98a}
+.ex-name{font-size:13.5px;font-weight:500;color:var(--ink);margin-bottom:2px}
+.ex-sets{font-size:12px;color:var(--ink-soft)}
+
+/* YOGA BLOCKS */
+.yoga-round{background:var(--warm);border:1px solid var(--border);border-radius:10px;margin-bottom:10px;overflow:hidden}
+.yoga-round-hd{padding:9px 13px;background:#1f1a15;display:flex;justify-content:space-between;align-items:center}
+.yoga-round-title{font-size:12px;font-weight:600;color:#fff;letter-spacing:0.04em}
+.yoga-round-meta{font-size:10px;color:rgba(255,255,255,0.45)}
+.yoga-ex{display:flex;justify-content:space-between;align-items:center;padding:9px 13px;border-bottom:1px solid var(--border);font-size:13px;gap:8px}
+.yoga-ex:last-child{border-bottom:none}
+.yoga-ex-time{font-size:11px;color:var(--ink-soft);background:var(--paper);padding:2px 8px;border-radius:20px;flex-shrink:0;text-align:right}
+
+/* FOOTER */
+.foot{background:var(--ink);color:rgba(255,255,255,0.38);padding:26px 20px;font-size:12px;line-height:1.7;margin-top:6px}
+.footn{font-family:var(--serif);font-size:20px;font-style:italic;color:rgba(255,255,255,0.6);margin-bottom:6px}
+
+/* COACH NOTES */
+.coach-tag{display:inline-block;font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:#1f1a15;color:#e8b98a;padding:3px 10px;border-radius:20px;margin-bottom:14px}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div id="cover">
+  <div class="cover-eyebrow">Weight Loss + PCOD-Supportive Plan</div>
+  <div class="cover-name">Disha<br><em>Garg</em></div>
+  <div class="cover-sub">Vegetarian, home-cooked meals — protein-forward nutrition and a joint-friendly strength + yoga split built for where you are right now.</div>
+  <div class="cover-pills">
+    <span class="cpill">5'5" · 107 kg</span>
+    <span class="cpill">Vegetarian</span>
+    <span class="cpill">PCOD-Supportive</span>
+    <span class="cpill">Beginner</span>
+    <span class="cpill">No Equipment</span>
+  </div>
+  <div class="cover-coach">Your Coach</div>
+  <div class="cover-role">YourFitMitra · Fat Loss & Strength Foundations</div>
+</div>
+
+<!-- ═══════════════════ OVERVIEW ═══════════════════ -->
+<div id="overview" class="sec-anchor"></div>
+<div class="ph">
+  <div class="ph-eye">Overview</div>
+  <div class="ph-title">Your starting point<br>and how we'll build.</div>
+</div>
+<div class="cx">
+
+  <div class="al ok"><strong>Where we're focused first:</strong> Consistency over intensity. You're starting from zero training experience — every part of this plan is built to be sustainable on a desk-job schedule, not something you have to fight against.</div>
+  <div class="al i"><strong>PCOD & stress:</strong> Two of your yoga sessions each week are built specifically around stress regulation — this matters for PCOD as much as the training does. Along with that, we're keeping carbs moderate and protein higher across the day to support more stable energy.</div>
+
+  <div class="div"></div>
+
+  <div class="slbl">Nutrition targets</div>
+  <div class="stit">Why these numbers.</div>
+
+  <div class="card">
+    <div class="ch teal"><div class="ct">Daily targets</div></div>
+    <div>
+      <div class="tr"><div class="trm">Calories</div><div class="trv">~1,500 kcal / day</div><div class="trd">A moderate, sustainable deficit — enough to see steady progress without leaving you drained through a full desk-job day.</div></div>
+      <div class="tr"><div class="trm">Protein</div><div class="trv">~100g</div><div class="trd">Built primarily around dal, legumes, curd, nuts/seeds, and a whey supplement. Paneer or tofu are worth revisiting too — they're some of the most filling, protein-dense options available, even a couple of times a week.</div></div>
+      <div class="tr"><div class="trm">Carbs</div><div class="trv">~170g</div><div class="trd">Moderate, and always paired with protein or fibre rather than eaten alone — this keeps energy more stable through the day.</div></div>
+      <div class="tr"><div class="trm">Fibre</div><div class="trv">~30g</div><div class="trd">Keeps you fuller for longer and supports steadier blood sugar — especially useful alongside PCOD.</div></div>
+    </div>
+  </div>
+
+  <div class="stats three">
+    <div class="st tl"><div class="stl">Protein</div><div class="stv">100g</div><div class="stu">~27%</div></div>
+    <div class="st"><div class="stl">Carbs</div><div class="stv">170g</div><div class="stu">~46%</div></div>
+    <div class="st br"><div class="stl">Fat</div><div class="stv">45g</div><div class="stu">~27%</div></div>
+  </div>
+
+  <div class="macro-bar">
+    <div class="macro-bar-label"><span>Macro split — ~1,500 kcal</span><span>400 + 680 + 405 kcal</span></div>
+    <div class="macro-bar-track">
+      <div class="mb-p" style="width:27%"></div>
+      <div class="mb-c" style="width:46%"></div>
+      <div class="mb-f" style="width:27%"></div>
+    </div>
+    <div class="macro-legend">
+      <div class="ml-item"><div class="ml-dot" style="background:#1a6b5a"></div>Protein 100g</div>
+      <div class="ml-item"><div class="ml-dot" style="background:#1d56c4"></div>Carbs 170g</div>
+      <div class="ml-item"><div class="ml-dot" style="background:#c17f24"></div>Fat 45g</div>
+    </div>
+  </div>
+
+  <div class="div"></div>
+
+  <div class="slbl">Two habits to build alongside the plan</div>
+
+  <div class="card">
+    <div class="ch"><div class="ct">💧 Water intake</div></div>
+    <div class="cb">Currently at 1–2L a day — build this up to 2.5–3L. Keep a bottle at your desk and refill on a schedule rather than waiting to feel thirsty.</div>
+  </div>
+  <div class="card">
+    <div class="ch"><div class="ct">🚶 Daily steps</div></div>
+    <div class="cb">Currently 2,000–5,000. No need to force 10k right away — build toward 6,000–7,000 first through short walk breaks across the workday, then we'll raise it as training becomes routine.</div>
+  </div>
+
+  <div class="div"></div>
+
+  <div class="slbl">Invest in · right now</div>
+  <div class="stit">The one addition that<br>closes your protein gap.</div>
+
+  <div class="invest-item">
+    <div class="invest-icon">🥤</div>
+    <div>
+      <div class="invest-name">Whey Protein (Unflavoured/Chocolate)</div>
+      <div class="invest-desc">With paneer, tofu, soya, and eggs all off the table, whey is what makes hitting 100g of protein realistic. One scoop mixed with water or milk covers roughly a quarter of your daily target. NAKPRO Impact Whey or MuscleBlaze Biozyme both fit comfortably within a ₹2,000–3,000 budget.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════ DIET ═══════════════════ -->
+<div id="diet" class="sec-anchor"></div>
+<div class="ph">
+  <div class="ph-eye">Nutrition</div>
+  <div class="ph-title">Your daily meal plan.<br>Vegetarian, home-cooked.</div>
+</div>
+<div class="cx">
+
+  <div class="al i"><strong>Daily total: ~1,500 kcal · P 100g · C 170g · F 45g.</strong> Same structure every day — rotate the dal, sabzi, and fruit so it doesn't feel repetitive, but keep the format consistent.</div>
+
+  <!-- BREAKFAST -->
+  <div class="card">
+    <div class="ch teal"><div class="ct">Breakfast</div><div class="cm">~320 kcal · P 22g · Within 45 min of waking</div></div>
+    <div class="cb">
+      · 2 moong dal / besan chillas (no oil pooling — brush the tawa)<br>
+      · Mint-coriander chutney<br>
+      · 1 bowl curd (150g)<br><br>
+      <strong>Rotate with:</strong> Vegetable-loaded poha or vermicelli (light oil, extra veggies, peanuts on top) + 1 bowl curd — 2–3 days a week for variety.
+      <div class="nt w">Skip the stuffed/fried parathas for now — same taste direction (chilla, poha) but far better protein-to-calorie ratio.</div>
+    </div>
+  </div>
+
+  <!-- MID-MORNING -->
+  <div class="card">
+    <div class="ch"><div class="ct">Mid-morning</div><div class="cm">~120 kcal · P 8–10g · 11:00–11:30am</div></div>
+    <div class="cb">
+      · 30g roasted chana OR a small handful of mixed nuts &amp; seeds<br>
+      · Black coffee / tea with minimal milk (as you already prefer)
+    </div>
+  </div>
+
+  <!-- LUNCH -->
+  <div class="card">
+    <div class="ch"><div class="ct">Lunch</div><div class="cm">~430 kcal · P 26–28g · 1:00–2:00pm</div></div>
+    <div class="cb">
+      <strong>Salad first — mandatory.</strong> Cucumber, tomato, onion, lemon.<br><br>
+      · 1–2 rotis (roti, not paratha)<br>
+      · 1.5 cups dal or rajma/chana curry <span class="bx ok">main protein</span><br>
+      · 1 cup sabzi — palak, bhindi, lauki, mixed veg, rotated daily<br>
+      · Small bowl curd<br>
+      <div class="nt ok">🍋 A squeeze of lemon on the dal every day — helps with iron absorption and adds flavour without any added calories.</div>
+    </div>
+  </div>
+
+  <!-- EVENING -->
+  <div class="card hi">
+    <div class="ch teal"><div class="ct">Evening <span class="bx ok">Protein shake</span></div><div class="cm">~150 kcal · P 24g · 4:30–5:30pm, or post-workout on training days</div></div>
+    <div class="cb">
+      · 1 scoop whey protein with water or milk<br>
+      · Optional: small fruit on the side (apple, guava, orange)
+      <div class="nt i">On workout days, this slot moves to right after your session instead — helps with recovery.</div>
+    </div>
+  </div>
+
+  <!-- DINNER -->
+  <div class="card">
+    <div class="ch"><div class="ct">Dinner</div><div class="cm">~380 kcal · P 20g · 7:30–8:30pm</div></div>
+    <div class="cb">
+      <strong>Salad first.</strong><br><br>
+      · 1 roti + 1 cup dal/chana-rajma curry <span class="bx ok">preferred</span><br>
+      · OR a moderate bowl of dal-khichdi (max 2×/week, not nightly)<br>
+      · 1 cup sabzi<br>
+      <div class="nt w">Keep khichdi/daliya/rice-mix nights to 2 a week for now — rotis with dal give you more protein per meal.</div>
+    </div>
+  </div>
+
+  <!-- OPTIONAL UPGRADE -->
+  <div class="card hi">
+    <div class="ch teal"><div class="ct">Worth trying again — Paneer or Tofu <span class="bx ok">Optional</span></div></div>
+    <div class="cb">You mentioned you're not a fan, but if you're ever open to it — even 2–3× a week — 80–100g paneer or 100g tofu swapped into lunch or dinner is one of the most filling, protein-dense additions you could make. It would also mean relying on the whey shake a little less.
+      <div class="nt ok">Totally optional, no pressure. Swap it in for the dal portion on days you're up for it — everything else in the meal stays the same.</div>
+    </div>
+  </div>
+
+  <div class="div"></div>
+
+  <!-- AVOID -->
+  <div class="card">
+    <div class="ch"><div class="ct" style="color:var(--brick)">Keep off the plate</div></div>
+    <div class="cb">Soya, mushroom (as discussed) · Fried/stuffed parathas · Bhujia, namkeen, chaat as a regular habit — occasional is fine, not weekly · Added sugar (you're already doing well here — keep it up) · Biscuits/cookies (already avoided — great habit)</div>
+  </div>
+
+  <div class="div"></div>
+
+  <!-- SNACKS -->
+  <div class="slbl">If hunger hits between meals</div>
+  <div class="stit">Safe options that fit<br>your preferences.</div>
+
+  <div class="snk"><div class="snkn">1. Roasted chana — 30g</div><div class="snkb">High protein, high fibre, keeps hunger away for hours. Easy to keep at your desk.</div><div class="snkm">~110 kcal · P 7g</div></div>
+  <div class="snk"><div class="snkn">2. Makhana (fox nuts) — 1 bowl (20–25g)</div><div class="snkb">Dry roast with black salt and jeera. Light, crunchy, low calorie.</div><div class="snkm">~90 kcal · Low GI</div></div>
+  <div class="snk"><div class="snkn">3. Plain curd — 150g</div><div class="snkb">No sugar, no fruit mixed in. Add roasted jeera and black salt if you like it savoury.</div><div class="snkm">~90 kcal · P 8g</div></div>
+  <div class="snk"><div class="snkn">4. Mixed nuts &amp; seeds — 1 small handful</div><div class="snkb">Almonds, walnuts, pumpkin/sunflower seeds. Calorie-dense — stick to one handful, eat slowly.</div><div class="snkm">~100 kcal · Good fats</div></div>
+  <div class="snk"><div class="snkn">5. Seasonal fruit — 1 medium serving</div><div class="snkb">Apple, guava, orange, or papaya. Skip mango and banana as a daily habit for now — save them for occasional treats.</div><div class="snkm">~70–90 kcal</div></div>
+  <div class="snk"><div class="snkn">6. Cucumber — unlimited</div><div class="snkb">With black salt and lemon. Genuinely free food — use it whenever the craving is more about chewing than hunger.</div><div class="snkm">~15 kcal per cup</div></div>
+
+</div>
+
+<!-- ═══════════════════ WORKOUT ═══════════════════ -->
+<div id="workout" class="sec-anchor"></div>
+<div class="ph">
+  <div class="ph-eye">Training</div>
+  <div class="ph-title">Your workout plan.<br>Bodyweight + Yoga.</div>
+</div>
+<div class="cx">
+
+  <div class="slbl">Weekly structure</div>
+  <div class="week-strip">
+    <div class="wday up"><div class="wd-name">Mon</div><div class="wd-icon">💪</div><div class="wd-label">Upper Body</div></div>
+    <div class="wday low"><div class="wd-name">Tue</div><div class="wd-icon">🦵</div><div class="wd-label">Lower Body</div></div>
+    <div class="wday yog"><div class="wd-name">Wed</div><div class="wd-icon">🧘</div><div class="wd-label">Yoga 1</div></div>
+    <div class="wday up"><div class="wd-name">Thu</div><div class="wd-icon">💪</div><div class="wd-label">Upper Body</div></div>
+    <div class="wday low"><div class="wd-name">Fri</div><div class="wd-icon">🦵</div><div class="wd-label">Lower Body</div></div>
+    <div class="wday yog"><div class="wd-name">Sat</div><div class="wd-icon">🧘</div><div class="wd-label">Yoga 2</div></div>
+    <div class="wday rest"><div class="wd-name">Sun</div><div class="wd-icon">🌙</div><div class="wd-label">Rest</div></div>
+  </div>
+  <div class="nt i" style="margin-bottom:14px">Upper Body and Lower Body each repeat the same routine twice a week — repetition builds confidence and lets you track real progress rep by rep. Swap days based on your week, but keep the rest day.</div>
+
+  <div class="slbl">Bodyweight days · no equipment</div>
+  <div class="stit">3 sets × 15–20 reps.<br>20–30 min, 5 exercises.</div>
+
+  <!-- UPPER BODY -->
+  <div class="card">
+    <div class="ch dark"><div class="ct">Upper Body — Mon &amp; Thu</div><div class="cm">Same routine both days · Chest, shoulders, back, triceps</div></div>
+    <div>
+      <div class="ex-row fire"><div class="ex-n">1</div><div><div class="ex-name">Incline Push-ups <span class="bx new">Use a table/couch edge</span></div><div class="ex-sets">3 × 15–20 reps · hands elevated, walk feet back as you get stronger</div></div></div>
+      <div class="ex-row"><div class="ex-n">2</div><div><div class="ex-name">Plank Shoulder Taps</div><div class="ex-sets">3 × 15–20 reps (each hand counts as 1) · knees down if needed, hips stay still</div></div></div>
+      <div class="ex-row"><div class="ex-n">3</div><div><div class="ex-name">Superman Raises</div><div class="ex-sets">3 × 15–20 reps · lift chest and legs together, slow and controlled, no jerking</div></div></div>
+      <div class="ex-row"><div class="ex-n">4</div><div><div class="ex-name">Chair/Couch Tricep Dips</div><div class="ex-sets">3 × 15–20 reps · bend knees to make it easier, keep elbows pointing back</div></div></div>
+      <div class="ex-row"><div class="ex-n">5</div><div><div class="ex-name">Standing Wall Angels</div><div class="ex-sets">3 × 15–20 reps · back flat against wall, slide arms up and down slowly — great for desk-job posture</div></div></div>
+    </div>
+  </div>
+
+  <!-- LOWER BODY -->
+  <div class="card">
+    <div class="ch dark"><div class="ct">Lower Body — Tue &amp; Fri</div><div class="cm">Same routine both days · Glutes, quads, calves</div></div>
+    <div>
+      <div class="ex-row fire"><div class="ex-n">1</div><div><div class="ex-name">Chair-Assisted Squats</div><div class="ex-sets">3 × 15–20 reps · tap the chair and stand back up, keeps depth safe and consistent</div></div></div>
+      <div class="ex-row"><div class="ex-n">2</div><div><div class="ex-name">Glute Bridges</div><div class="ex-sets">3 × 15–20 reps · squeeze glutes at the top, lower slowly</div></div></div>
+      <div class="ex-row"><div class="ex-n">3</div><div><div class="ex-name">Standing Side Leg Raises</div><div class="ex-sets">3 × 15–20 reps each side · hold onto a wall or chair for balance</div></div></div>
+      <div class="ex-row"><div class="ex-n">4</div><div><div class="ex-name">Step-Ups (low step/stair)</div><div class="ex-sets">3 × 15–20 reps each leg · use a stair or a sturdy low step</div></div></div>
+      <div class="ex-row"><div class="ex-n">5</div><div><div class="ex-name">Calf Raises</div><div class="ex-sets">3 × 15–20 reps · hold a wall for balance, pause at the top</div></div></div>
+    </div>
+  </div>
+
+  <div class="nt ok" style="margin-bottom:16px"><strong>Form notes:</strong> No jumping or high-impact moves for now — every exercise here is joint-friendly by design. Rest 45–60 sec between sets. Focus on clean, controlled reps over speed; add reps toward the top of the range (20) before we progress the exercises.</div>
+
+  <div class="div"></div>
+
+  <!-- YOGA -->
+  <div class="slbl">Yoga days · 2 sessions per week</div>
+  <div class="stit">60 min each.<br>Grounding + stress release.</div>
+
+  <!-- YOGA 1 -->
+  <div class="card">
+    <div class="ch teal"><div class="ct">Yoga 1 — Foundation Flow</div><div class="cm">Wed · ~60 min · Mobility, breath, full-body grounding</div></div>
+    <div style="padding:0 15px 6px">
+      <div class="yoga-round">
+        <div class="yoga-round-hd"><span class="yoga-round-title">Warm-up & Breath · 10 min</span><span class="yoga-round-meta">Seated or standing</span></div>
+        <div class="yoga-ex">Deep belly breathing (seated)<span class="yoga-ex-time">2 min</span></div>
+        <div class="yoga-ex">Neck rolls, both directions<span class="yoga-ex-time">1 min</span></div>
+        <div class="yoga-ex">Shoulder rolls & arm circles<span class="yoga-ex-time">2 min</span></div>
+        <div class="yoga-ex">Cat-Cow (Marjariasana)<span class="yoga-ex-time">2 min</span></div>
+        <div class="yoga-ex">Gentle spinal twists (seated)<span class="yoga-ex-time">2 min</span></div>
+      </div>
+      <div class="yoga-round">
+        <div class="yoga-round-hd"><span class="yoga-round-title">Standing Sequence · 25 min</span><span class="yoga-round-meta">Hold each 20–30 sec, both sides</span></div>
+        <div class="yoga-ex">Mountain Pose (Tadasana)<span class="yoga-ex-time">1 min</span></div>
+        <div class="yoga-ex">Standing Forward Fold (bent knees okay)<span class="yoga-ex-time">30 sec</span></div>
+        <div class="yoga-ex">Modified Sun Salutation (slow pace, no jump-backs)<span class="yoga-ex-time">3 rounds</span></div>
+        <div class="yoga-ex">Warrior II (Virabhadrasana II)<span class="yoga-ex-time">30 sec each side</span></div>
+        <div class="yoga-ex">Triangle Pose, hand on shin (Trikonasana)<span class="yoga-ex-time">30 sec each side</span></div>
+        <div class="yoga-ex">Tree Pose, hand on wall if needed (Vrikshasana)<span class="yoga-ex-time">20 sec each side</span></div>
+      </div>
+      <div class="yoga-round">
+        <div class="yoga-round-hd"><span class="yoga-round-title">Floor & Cool-down · 20 min</span><span class="yoga-round-meta">Slow, no rushing</span></div>
+        <div class="yoga-ex">Bridge Pose (Setu Bandhasana)<span class="yoga-ex-time">3 × 20 sec</span></div>
+        <div class="yoga-ex">Seated Forward Fold (Paschimottanasana)<span class="yoga-ex-time">1 min</span></div>
+        <div class="yoga-ex">Reclined Twist, both sides<span class="yoga-ex-time">1 min each</span></div>
+        <div class="yoga-ex">Legs-Up-The-Wall (Viparita Karani)<span class="yoga-ex-time">5 min</span></div>
+        <div class="yoga-ex">Savasana<span class="yoga-ex-time">5 min</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- YOGA 2 -->
+  <div class="card">
+    <div class="ch teal"><div class="ct">Yoga 2 — Stress Release & PCOD Support</div><div class="cm">Sat · ~60 min · Restorative, breath-focused</div></div>
+    <div style="padding:0 15px 6px">
+      <div class="yoga-round">
+        <div class="yoga-round-hd"><span class="yoga-round-title">Pranayama · 12 min</span><span class="yoga-round-meta">Seated, eyes closed</span></div>
+        <div class="yoga-ex">Diaphragmatic breathing<span class="yoga-ex-time">3 min</span></div>
+        <div class="yoga-ex">Anulom Vilom (alternate nostril)<span class="yoga-ex-time">5 min</span></div>
+        <div class="yoga-ex">Bhramari (humming bee breath)<span class="yoga-ex-time">4 min</span></div>
+      </div>
+      <div class="yoga-round">
+        <div class="yoga-round-hd"><span class="yoga-round-title">Gentle Flow · 23 min</span><span class="yoga-round-meta">Hold each 30–45 sec, both sides</span></div>
+        <div class="yoga-ex">Cat-Cow → Child's Pose flow<span class="yoga-ex-time">3 min</span></div>
+        <div class="yoga-ex">Cobra Pose (Bhujangasana)<span class="yoga-ex-time">3 × 20 sec</span></div>
+        <div class="yoga-ex">Butterfly Pose (Baddha Konasana) — supports PCOD<span class="yoga-ex-time">2 min</span></div>
+        <div class="yoga-ex">Seated Wide-Leg Forward Fold<span class="yoga-ex-time">1 min</span></div>
+        <div class="yoga-ex">Bridge Pose, held longer<span class="yoga-ex-time">3 × 30 sec</span></div>
+        <div class="yoga-ex">Camel Pose (modified, hands on lower back)<span class="yoga-ex-time">2 × 20 sec</span></div>
+      </div>
+      <div class="yoga-round">
+        <div class="yoga-round-hd"><span class="yoga-round-title">Restorative Cool-down · 25 min</span><span class="yoga-round-meta">This is the most important part — don't rush it</span></div>
+        <div class="yoga-ex">Reclined Butterfly (Supta Baddha Konasana)<span class="yoga-ex-time">5 min</span></div>
+        <div class="yoga-ex">Reclined Twist, both sides<span class="yoga-ex-time">1.5 min each</span></div>
+        <div class="yoga-ex">Legs-Up-The-Wall (Viparita Karani)<span class="yoga-ex-time">8 min</span></div>
+        <div class="yoga-ex">Savasana with slow breath awareness<span class="yoga-ex-time">8 min</span></div>
+      </div>
+    </div>
+    <div class="cb" style="padding-top:4px">
+      <div class="nt ok">This session matters as much for stress and PCOD as the strength days do for the body — high stress directly affects hormonal balance. Treat this one as non-negotiable, not optional.</div>
+    </div>
+  </div>
+
+  <div class="div"></div>
+
+  <div class="card">
+    <div class="ch"><div class="ct">Training notes</div></div>
+    <div>
+      <div class="tr"><div class="trm">Hydration</div><div class="trd">Sip water through every session — don't wait until you're thirsty, especially on the bodyweight days.</div></div>
+      <div class="tr"><div class="trm">No high-impact</div><div class="trd">No jumps, no running-based moves for now. Everything here is designed to be joint-friendly while you build a base.</div></div>
+      <div class="tr"><div class="trm">Progression</div><div class="trd">Once 20 clean reps feel easy across all 3 sets, we'll add a harder variation of each move — not weight, just a tougher version.</div></div>
+      <div class="tr"><div class="trm">Sleep</div><div class="trd">You're at 6–7 hrs — try to protect this. Poor sleep makes both stress and consistency harder to manage.</div></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══════════════════ COACH NOTES (INTERNAL) ═══════════════════ -->
+<div id="coach" class="sec-anchor"></div>
+<div class="ph">
+  <div class="ph-eye">Internal</div>
+  <div class="ph-title">Coach notes.<br>Not client-facing.</div>
+</div>
+<div class="cx">
+  <div class="coach-tag">🔒 Internal use only</div>
+
+  <div class="card">
+    <div class="ch brick"><div class="ct">Client profile</div></div>
+    <div class="cb">
+      25F · 5'5" (165cm) · 107kg · BMI ~39.3 (Class II obesity)<br>
+      Sedentary → beginner, no training history<br>
+      Desk job, 8–10 hrs, high stress, sleep 6–7hrs (average quality)<br>
+      Motivation: weight loss for marriage + PCOD/PCOS management<br>
+      Occasional smoking, occasional alcohol, 2–3 cups caffeine/day<br>
+      No budget constraint on food · Protein powder budget ₹2,000–3,000
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch brick"><div class="ct">🚩 Red flags / open items</div></div>
+    <div class="cb">
+      <strong>Unconfirmed allergy:</strong> Form lists "Other" under allergies with no detail specified. Confirm with her directly before finalising snack/nut recommendations — do not assume it's food-related, could be non-food (e.g. environmental).<br><br>
+      <strong>Protein sourcing is tight but not fully locked:</strong> no soya, mushroom, or eggs — but paneer and tofu have been reintroduced in the plan as an optional 2–3×/week swap, despite her listing both as disliked on intake. Worth a soft check-in on WhatsApp to see if she's actually willing to try them again; if she pushes back, fall back to dal/curd/nuts + whey as the default. Whey is still doing most of the heavy lifting regardless — watch for GI tolerance in week 1–2 and have a backup (isolate vs concentrate) ready if she reports bloating.<br><br>
+      <strong>Measurements look inconsistent:</strong> waist 41cm / hips 52cm don't line up with 107kg — likely a unit or entry error on her end. Re-measure at first check-in rather than using these as baseline.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ct">Real target vs. plan framing</div></div>
+    <div class="cb">
+      Long-term target stated on intake: 67kg (40kg total). This is a multi-phase journey, not a single plan — do not surface the 67kg number or any week/month timeline in client-facing docs.<br><br>
+      Internal Month 1 goal: 2–5kg, via ~1,500 kcal moderate deficit. Realistic given her starting TDEE (BMR ~1,815 kcal via Mifflin-St Jeor, activity-adjusted ~2,450–2,500). Reassess and re-cut at first check-in — don't extend this deficit long-term without a diet break given how aggressive the overall journey is.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ct">Menstrual cycle</div></div>
+    <div class="cb">Confirmed regular — the "No" on the intake form was a data entry error, not clinical irregularity. No PCOD-related cycle irregularity noted; monitor anyway given PCOD diagnosis.</div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ct">WhatsApp tone guidance</div></div>
+    <div class="cb">
+      First-time trainer — keep language encouraging and low-pressure, especially in week 1–2 when soreness/adherence dips are common. Avoid diet-culture language ("cheat meal," "good/bad foods") given the weight-for-marriage framing — reinforce health and energy wins over appearance, without dismissing her stated goal.<br><br>
+      She already avoids added sugar and biscuits on her own — call this out early as a genuine strength, it'll build trust fast.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="ch"><div class="ct">Progression watch-points</div></div>
+    <div class="cb">
+      Week 1–2: adherence and form over intensity — she's sedentary starting cold, expect soreness from the bodyweight days especially.<br>
+      Week 3–4: if 20 clean reps feel easy across all sets, progress exercise difficulty (not load) — e.g. incline push-up → standard push-up on knees.<br>
+      Reassess at 4 weeks: weight trend, energy, stress/PCOD symptom check via WhatsApp, and whether whey is being tolerated well before deciding on phase 2 targets.
+    </div>
+  </div>
+
+</div>
+
+<div class="foot">
+  <div class="footn">Disha Garg</div>
+  Weight Loss · PCOD Support · Strength Foundations<br>
+  Vegetarian · No paneer / tofu / soya / mushroom / eggs · No equipment<br><br>
+  <span style="font-size:11px;color:rgba(255,255,255,0.18)">This plan is for fitness purposes only and does not replace medical advice.</span>
+</div>
+
+<nav class="bnav">
+  <a href="#overview" onclick="hl(this)"><span class="bnav-icon">📊</span>Overview</a>
+  <a href="#diet" onclick="hl(this)"><span class="bnav-icon">🍽</span>Diet</a>
+  <a href="#workout" onclick="hl(this)"><span class="bnav-icon">🏋️</span>Workout</a>
+  <a href="#coach" onclick="hl(this)"><span class="bnav-icon">🔒</span>Coach</a>
+</nav>
+
+<script>
+function hl(el) {
+  document.querySelectorAll('.bnav a').forEach(a => a.style.color = '');
+  el.style.color = '#fff';
+  setTimeout(() => { el.style.color = ''; }, 800);
+}
+const anchors = ['overview','diet','workout','coach'];
+const navLinks = document.querySelectorAll('.bnav a');
+function updateNav() {
+  let c = anchors[0];
+  anchors.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && window.scrollY >= el.offsetTop - 80) c = id;
+  });
+  navLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === '#' + c ? '#ffffff' : '';
+  });
+}
+window.addEventListener('scroll', updateNav, { passive: true });
+updateNav();
+</script>
+</body>
+</html>
