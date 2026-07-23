@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +13,7 @@
   --paper: #faf6f0; --warm: #f2e9da;
   --teal: #1a6b5a; --teal-soft: #e6f4f1;
   --brick: #b5652c; --brick-soft: #fbeee0;
+  --orange: #ff8c42;
   --info: #1d56c4; --info-soft: #eef3fd;
   --border: #e6dccc;
   --nav: 60px;
@@ -43,6 +43,8 @@ body{font-family:var(--sans);color:var(--ink);font-size:15px;line-height:1.7;pad
 /* SECTION STRUCTURE */
 .sec-anchor{display:block}
 .ph{padding:28px 20px 16px;border-bottom:1px solid var(--border);background:var(--paper)}
+.ph-row{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.ph-pdf-btn{flex-shrink:0;background:var(--orange);color:#fff;border:none;border-radius:10px;padding:9px 14px;font-size:12.5px;font-weight:700;font-family:var(--sans);cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:6px;margin-top:2px}
 .ph-eye{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal);margin-bottom:6px}
 .ph-title{font-family:var(--serif);font-size:27px;font-weight:400;line-height:1.15;color:var(--ink)}
 .cx{padding:18px 16px}
@@ -176,13 +178,13 @@ body{font-family:var(--sans);color:var(--ink);font-size:15px;line-height:1.7;pad
 <div id="cover">
   <div class="cover-eyebrow">Weight Loss + PCOD-Supportive Plan</div>
   <div class="cover-name">Disha<br><em>Garg</em></div>
-  <div class="cover-sub">Vegetarian, home-cooked meals — protein-forward nutrition and a joint-friendly strength + yoga split built for where you are right now.</div>
+  <div class="cover-sub">Vegetarian, home-cooked meals — protein-forward nutrition and a joint-friendly strength training split built for where you are right now.</div>
   <div class="cover-pills">
     <span class="cpill">5'5" · 107 kg</span>
     <span class="cpill">Vegetarian</span>
     <span class="cpill">PCOD-Supportive</span>
     <span class="cpill">Beginner</span>
-    <span class="cpill">No Equipment</span>
+    <span class="cpill">Band + 2kg DB</span>
   </div>
   <div class="cover-coach">Your Coach</div>
   <div class="cover-role">YourFitMitra · Fat Loss & Strength Foundations</div>
@@ -197,7 +199,7 @@ body{font-family:var(--sans);color:var(--ink);font-size:15px;line-height:1.7;pad
 <div class="cx">
 
   <div class="al ok"><strong>Where we're focused first:</strong> Consistency over intensity. You're starting from zero training experience — every part of this plan is built to be sustainable on a desk-job schedule, not something you have to fight against.</div>
-  <div class="al i"><strong>PCOD & stress:</strong> Two of your yoga sessions each week are built specifically around stress regulation — this matters for PCOD as much as the training does. Along with that, we're keeping carbs moderate and protein higher across the day to support more stable energy.</div>
+  <div class="al i"><strong>PCOD & stress:</strong> High stress directly affects PCOD, so this plan is built to stay approachable and consistent rather than demanding — that matters as much as any single session. We're also keeping carbs moderate and protein higher across the day to support more stable energy.</div>
 
   <div class="div"></div>
 
@@ -265,8 +267,13 @@ body{font-family:var(--sans);color:var(--ink);font-size:15px;line-height:1.7;pad
 <!-- ═══════════════════ DIET ═══════════════════ -->
 <div id="diet" class="sec-anchor"></div>
 <div class="ph">
-  <div class="ph-eye">Nutrition</div>
-  <div class="ph-title">Your daily meal plan.<br>Vegetarian, home-cooked.</div>
+  <div class="ph-row">
+    <div>
+      <div class="ph-eye">Nutrition</div>
+      <div class="ph-title">Your daily meal plan.<br>Vegetarian, home-cooked.</div>
+    </div>
+    <button class="ph-pdf-btn" onclick="printSection('diet')">📥 PDF</button>
+  </div>
 </div>
 <div class="cx">
 
@@ -276,7 +283,7 @@ body{font-family:var(--sans);color:var(--ink);font-size:15px;line-height:1.7;pad
     <div class="ch dark"><div class="ct">Your daily rhythm</div></div>
     <div>
       <div class="tr"><div class="trm">7:30am</div><div class="trd">Wake up</div></div>
-      <div class="tr"><div class="trm">8:30–9:30am</div><div class="trd">Workout — yoga or bodyweight (see Workout tab)</div></div>
+      <div class="tr"><div class="trm">8:30–9:30am</div><div class="trd">Workout (see Workout tab)</div></div>
       <div class="tr"><div class="trm">9:45am</div><div class="trd">Post-workout recovery</div></div>
       <div class="tr"><div class="trm">10:00am</div><div class="trd">Breakfast</div></div>
       <div class="tr"><div class="trm">12:00pm</div><div class="trd">Leave for office</div></div>
@@ -374,119 +381,147 @@ body{font-family:var(--sans);color:var(--ink);font-size:15px;line-height:1.7;pad
 <!-- ═══════════════════ WORKOUT ═══════════════════ -->
 <div id="workout" class="sec-anchor"></div>
 <div class="ph">
-  <div class="ph-eye">Training</div>
-  <div class="ph-title">Your workout plan.<br>Bodyweight + Yoga.</div>
+  <div class="ph-row">
+    <div>
+      <div class="ph-eye">Training</div>
+      <div class="ph-title">Your workout plan.<br>Bands, light weights, bodyweight.</div>
+    </div>
+    <button class="ph-pdf-btn" onclick="printSection('workout')">📥 PDF</button>
+  </div>
 </div>
 <div class="cx">
 
-  <div class="slbl">Weekly structure</div>
-  <div class="week-strip">
-    <div class="wday up"><div class="wd-name">Mon</div><div class="wd-icon">💪</div><div class="wd-label">Upper Body</div></div>
-    <div class="wday low"><div class="wd-name">Tue</div><div class="wd-icon">🦵</div><div class="wd-label">Lower Body</div></div>
-    <div class="wday yog"><div class="wd-name">Wed</div><div class="wd-icon">🧘</div><div class="wd-label">Yoga 1</div></div>
-    <div class="wday up"><div class="wd-name">Thu</div><div class="wd-icon">💪</div><div class="wd-label">Upper Body</div></div>
-    <div class="wday low"><div class="wd-name">Fri</div><div class="wd-icon">🦵</div><div class="wd-label">Lower Body</div></div>
-    <div class="wday yog"><div class="wd-name">Sat</div><div class="wd-icon">🧘</div><div class="wd-label">Yoga 2</div></div>
-    <div class="wday rest"><div class="wd-name">Sun</div><div class="wd-icon">🌙</div><div class="wd-label">Rest</div></div>
+  <div class="slbl">Weekly sequence</div>
+  <div class="week-strip" style="grid-template-columns:repeat(5,1fr)">
+    <div class="wday up"><div class="wd-name">Day 1</div><div class="wd-icon">💪</div><div class="wd-label">Push</div></div>
+    <div class="wday low"><div class="wd-name">Day 2</div><div class="wd-icon">🦵</div><div class="wd-label">Lower 1</div></div>
+    <div class="wday up"><div class="wd-name">Day 3</div><div class="wd-icon">🔙</div><div class="wd-label">Back</div></div>
+    <div class="wday low"><div class="wd-name">Day 4</div><div class="wd-icon">🦵</div><div class="wd-label">Lower 2</div></div>
+    <div class="wday up"><div class="wd-name">Day 5</div><div class="wd-icon">🔥</div><div class="wd-label">HIIT</div></div>
   </div>
-  <div class="nt i" style="margin-bottom:14px">Upper Body and Lower Body each repeat the same routine twice a week — repetition builds confidence and lets you track real progress rep by rep. Swap days based on your week, but keep the rest day.</div>
+  <div class="nt i" style="margin-bottom:14px">Fixed sequence: Upper, Lower, Upper, Lower, Full-Body HIIT — the two lower body days are never back to back. Beyond that order, pick whichever calendar days suit your week.</div>
 
-  <div class="slbl">Bodyweight days · no equipment</div>
-  <div class="stit">3 sets × 15–20 reps.<br>20–30 min, 5 exercises.</div>
-
-  <!-- UPPER BODY -->
   <div class="card">
-    <div class="ch dark"><div class="ct">Upper Body — Mon &amp; Thu</div><div class="cm">Same routine both days · Chest, shoulders, back, triceps</div></div>
-    <div>
-      <div class="ex-row fire"><div class="ex-n">1</div><div><div class="ex-name">Incline Push-ups <span class="bx new">Use a table/couch edge</span></div><div class="ex-sets">3 × 15–20 reps · hands elevated, walk feet back as you get stronger</div></div></div>
-      <div class="ex-row"><div class="ex-n">2</div><div><div class="ex-name">Plank Shoulder Taps</div><div class="ex-sets">3 × 15–20 reps (each hand counts as 1) · knees down if needed, hips stay still</div></div></div>
-      <div class="ex-row"><div class="ex-n">3</div><div><div class="ex-name">Superman Raises</div><div class="ex-sets">3 × 15–20 reps · lift chest and legs together, slow and controlled, no jerking</div></div></div>
-      <div class="ex-row"><div class="ex-n">4</div><div><div class="ex-name">Chair/Couch Tricep Dips</div><div class="ex-sets">3 × 15–20 reps · bend knees to make it easier, keep elbows pointing back</div></div></div>
-      <div class="ex-row"><div class="ex-n">5</div><div><div class="ex-name">Standing Wall Angels</div><div class="ex-sets">3 × 15–20 reps · back flat against wall, slide arms up and down slowly — great for desk-job posture</div></div></div>
-    </div>
+    <div class="ch"><div class="ct">Equipment on hand</div></div>
+    <div class="cb">Resistance band · One pair of 2kg dumbbells · A small stool/step · Bodyweight otherwise</div>
   </div>
-
-  <!-- LOWER BODY -->
-  <div class="card">
-    <div class="ch dark"><div class="ct">Lower Body — Tue &amp; Fri</div><div class="cm">Same routine both days · Glutes, quads, calves</div></div>
-    <div>
-      <div class="ex-row fire"><div class="ex-n">1</div><div><div class="ex-name">Chair-Assisted Squats</div><div class="ex-sets">3 × 15–20 reps · tap the chair and stand back up, keeps depth safe and consistent</div></div></div>
-      <div class="ex-row"><div class="ex-n">2</div><div><div class="ex-name">Glute Bridges</div><div class="ex-sets">3 × 15–20 reps · squeeze glutes at the top, lower slowly</div></div></div>
-      <div class="ex-row"><div class="ex-n">3</div><div><div class="ex-name">Standing Side Leg Raises</div><div class="ex-sets">3 × 15–20 reps each side · hold onto a wall or chair for balance</div></div></div>
-      <div class="ex-row"><div class="ex-n">4</div><div><div class="ex-name">Step-Ups (low step/stair)</div><div class="ex-sets">3 × 15–20 reps each leg · use a stair or a sturdy low step</div></div></div>
-      <div class="ex-row"><div class="ex-n">5</div><div><div class="ex-name">Calf Raises</div><div class="ex-sets">3 × 15–20 reps · hold a wall for balance, pause at the top</div></div></div>
-    </div>
-  </div>
-
-  <div class="nt ok" style="margin-bottom:16px"><strong>Form notes:</strong> No jumping or high-impact moves for now — every exercise here is joint-friendly by design. Rest 45–60 sec between sets. Focus on clean, controlled reps over speed; add reps toward the top of the range (20) before we progress the exercises.</div>
 
   <div class="div"></div>
 
-  <!-- YOGA -->
-  <div class="slbl">Yoga days · 2 sessions per week</div>
-  <div class="stit">60 min each.<br>Grounding + stress release.</div>
-
-  <!-- YOGA 1 -->
+  <!-- PUSH DAY -->
+  <div class="slbl">Day 1</div>
+  <div class="stit">Push Day —<br>Shoulders &amp; Chest.</div>
   <div class="card">
-    <div class="ch teal"><div class="ct">Yoga 1 — Foundation Flow</div><div class="cm">Wed · ~60 min · Mobility, breath, full-body grounding</div></div>
-    <div style="padding:0 15px 6px">
-      <div class="yoga-round">
-        <div class="yoga-round-hd"><span class="yoga-round-title">Warm-up & Breath · 10 min</span><span class="yoga-round-meta">Seated or standing</span></div>
-        <div class="yoga-ex">Deep belly breathing (seated)<span class="yoga-ex-time">2 min</span></div>
-        <div class="yoga-ex">Neck rolls, both directions<span class="yoga-ex-time">1 min</span></div>
-        <div class="yoga-ex">Shoulder rolls & arm circles<span class="yoga-ex-time">2 min</span></div>
-        <div class="yoga-ex">Cat-Cow (Marjariasana)<span class="yoga-ex-time">2 min</span></div>
-        <div class="yoga-ex">Gentle spinal twists (seated)<span class="yoga-ex-time">2 min</span></div>
-      </div>
-      <div class="yoga-round">
-        <div class="yoga-round-hd"><span class="yoga-round-title">Standing Sequence · 25 min</span><span class="yoga-round-meta">Hold each 20–30 sec, both sides</span></div>
-        <div class="yoga-ex">Mountain Pose (Tadasana)<span class="yoga-ex-time">1 min</span></div>
-        <div class="yoga-ex">Standing Forward Fold (bent knees okay)<span class="yoga-ex-time">30 sec</span></div>
-        <div class="yoga-ex">Modified Sun Salutation (slow pace, no jump-backs)<span class="yoga-ex-time">3 rounds</span></div>
-        <div class="yoga-ex">Warrior II (Virabhadrasana II)<span class="yoga-ex-time">30 sec each side</span></div>
-        <div class="yoga-ex">Triangle Pose, hand on shin (Trikonasana)<span class="yoga-ex-time">30 sec each side</span></div>
-        <div class="yoga-ex">Tree Pose, hand on wall if needed (Vrikshasana)<span class="yoga-ex-time">20 sec each side</span></div>
-      </div>
-      <div class="yoga-round">
-        <div class="yoga-round-hd"><span class="yoga-round-title">Floor & Cool-down · 20 min</span><span class="yoga-round-meta">Slow, no rushing</span></div>
-        <div class="yoga-ex">Bridge Pose (Setu Bandhasana)<span class="yoga-ex-time">3 × 20 sec</span></div>
-        <div class="yoga-ex">Seated Forward Fold (Paschimottanasana)<span class="yoga-ex-time">1 min</span></div>
-        <div class="yoga-ex">Reclined Twist, both sides<span class="yoga-ex-time">1 min each</span></div>
-        <div class="yoga-ex">Legs-Up-The-Wall (Viparita Karani)<span class="yoga-ex-time">5 min</span></div>
-        <div class="yoga-ex">Savasana<span class="yoga-ex-time">5 min</span></div>
-      </div>
+    <div class="ch dark"><div class="ct">Push Day</div><div class="cm">3 sets each · Shoulders → Chest</div></div>
+    <div>
+      <div class="ex-row fire"><div class="ex-n">1</div><div><div class="ex-name">Shoulder Press <span class="bx ok">2kg DB</span></div><div class="ex-sets">3 × 12–15 reps · seated or standing, press straight overhead</div></div></div>
+      <div class="ex-row"><div class="ex-n">2</div><div><div class="ex-name">Lateral Raise <span class="bx ok">2kg DB</span></div><div class="ex-sets">3 × 12–15 reps · raise to shoulder height, slight bend in elbows</div></div></div>
+      <div class="ex-row"><div class="ex-n">3</div><div><div class="ex-name">Front Raise <span class="bx ok">2kg DB</span></div><div class="ex-sets">3 × 12–15 reps · raise to eye level, control the way down</div></div></div>
+      <div class="ex-row"><div class="ex-n">4</div><div><div class="ex-name">Floor Chest Press <span class="bx ok">2kg DB</span></div><div class="ex-sets">3 × 12–15 reps · lying on a mat, knees bent, press straight up</div></div></div>
+      <div class="ex-row"><div class="ex-n">5</div><div><div class="ex-name">Floor Chest Fly <span class="bx ok">2kg DB</span></div><div class="ex-sets">3 × 12–15 reps · lying on a mat, slight bend in elbows throughout</div></div></div>
+    </div>
+    <div class="core-sep"><div class="core-sep-label">Core Finisher</div></div>
+    <div>
+      <div class="ex-row core"><div class="ex-n">C1</div><div><div class="ex-name">Russian Twists <span class="bx new">Bodyweight or 2kg DB</span></div><div class="ex-sets">3 × 20 reps (10 each side) · lean back slightly, rotate from the ribs</div></div></div>
+      <div class="ex-row core"><div class="ex-n">C2</div><div><div class="ex-name">Dead Bug</div><div class="ex-sets">3 × 10 reps each side · lower back stays flat on the floor throughout</div></div></div>
     </div>
   </div>
 
-  <!-- YOGA 2 -->
+  <div class="div"></div>
+
+  <!-- LOWER BODY 1 -->
+  <div class="slbl">Day 2</div>
+  <div class="stit">Lower Body 1 —<br>Quad &amp; Hamstring Focus.</div>
   <div class="card">
-    <div class="ch teal"><div class="ct">Yoga 2 — Stress Release & PCOD Support</div><div class="cm">Sat · ~60 min · Restorative, breath-focused</div></div>
+    <div class="ch dark"><div class="ct">Lower Body 1</div><div class="cm">3 sets each · Squats, lunges, glutes, calves</div></div>
+    <div>
+      <div class="ex-row fire"><div class="ex-n">1</div><div><div class="ex-name">Bodyweight Squats <span class="bx new">Bodyweight</span></div><div class="ex-sets">3 × 15–20 reps · chest up, sit back like into a chair</div></div></div>
+      <div class="ex-row"><div class="ex-n">2</div><div><div class="ex-name">Reverse Lunges <span class="bx new">Bodyweight</span></div><div class="ex-sets">3 × 12–15 reps each leg · step back, knee taps down lightly</div></div></div>
+      <div class="ex-row"><div class="ex-n">3</div><div><div class="ex-name">Glute Bridges <span class="bx new">Bodyweight</span></div><div class="ex-sets">3 × 15–20 reps · squeeze at the top, lower slowly</div></div></div>
+      <div class="ex-row"><div class="ex-n">4</div><div><div class="ex-name">Step-Ups <span class="bx new">Stool</span></div><div class="ex-sets">3 × 12–15 reps each leg · using the small stool — added for extra quad and hamstring work</div></div></div>
+      <div class="ex-row"><div class="ex-n">5</div><div><div class="ex-name">Calf Raises <span class="bx new">Stool</span></div><div class="ex-sets">3 × 15–20 reps · on the edge of the stool, full stretch at the bottom</div></div></div>
+    </div>
+    <div class="core-sep"><div class="core-sep-label">Core Finisher</div></div>
+    <div>
+      <div class="ex-row core"><div class="ex-n">C1</div><div><div class="ex-name">Plank Hold</div><div class="ex-sets">3 × 30 sec · elbows under shoulders, no sagging hips</div></div></div>
+      <div class="ex-row core"><div class="ex-n">C2</div><div><div class="ex-name">Plank Shoulder Taps</div><div class="ex-sets">3 × 15–20 reps (both sides) · knees down if needed, hips stay still</div></div></div>
+      <div class="ex-row core"><div class="ex-n">C3</div><div><div class="ex-name">Mountain Climbers</div><div class="ex-sets">3 × 20 reps · controlled pace, not a sprint</div></div></div>
+    </div>
+  </div>
+
+  <div class="div"></div>
+
+  <!-- BACK DAY -->
+  <div class="slbl">Day 3</div>
+  <div class="stit">Back Day —<br>Back, Biceps &amp; Triceps.</div>
+  <div class="card">
+    <div class="ch dark"><div class="ct">Back Day</div><div class="cm">3 sets each · Back → Biceps → Triceps</div></div>
+    <div>
+      <div class="ex-row fire"><div class="ex-n">1</div><div><div class="ex-name">Resistance Band Rows <span class="bx i">Band</span></div><div class="ex-sets">3 × 15–20 reps · anchor band at chest height (or under feet seated), pull elbows back</div></div></div>
+      <div class="ex-row"><div class="ex-n">2</div><div><div class="ex-name">Bent-Over Dumbbell Row <span class="bx ok">2kg DB</span></div><div class="ex-sets">3 × 12–15 reps · hinge forward, flat back, pull dumbbells to ribs — added for more direct back work</div></div></div>
+      <div class="ex-row"><div class="ex-n">3</div><div><div class="ex-name">Resistance Band Pull-Apart <span class="bx i">Band</span></div><div class="ex-sets">3 × 15–20 reps · arms straight out front, pull band apart to chest level — great for posture and rear delts</div></div></div>
+      <div class="ex-row"><div class="ex-n">4</div><div><div class="ex-name">Superman <span class="bx new">Bodyweight</span></div><div class="ex-sets">3 × 15–20 reps · lift chest and legs together, slow and controlled</div></div></div>
+      <div class="ex-row"><div class="ex-n">5</div><div><div class="ex-name">Resistance Band Bicep Curls <span class="bx i">Band</span></div><div class="ex-sets">3 × 15–20 reps · stand on band, curl up slow, control the lowering</div></div></div>
+      <div class="ex-row"><div class="ex-n">6</div><div><div class="ex-name">Overhead Tricep Extension <span class="bx ok">2kg DB</span></div><div class="ex-sets">3 × 12–15 reps · both hands on one dumbbell, elbows close to ears — moved here from Push Day to keep that day lighter</div></div></div>
+      <div class="ex-row"><div class="ex-n">7</div><div><div class="ex-name">Tricep Dips <span class="bx new">Bodyweight</span></div><div class="ex-sets">3 × 12–15 reps · using a chair or couch edge, bend knees to make it easier</div></div></div>
+    </div>
+  </div>
+
+  <div class="nt i" style="margin-bottom:16px">Push-ups are placed on Day 5 instead of here — gives Push and Back days a cleaner split and keeps the HIIT day full-body.</div>
+
+  <div class="div"></div>
+
+  <!-- LOWER BODY 2 -->
+  <div class="slbl">Day 4</div>
+  <div class="stit">Lower Body 2 —<br>Posterior Chain, Band Focus.</div>
+  <div class="card">
+    <div class="ch dark"><div class="ct">Lower Body 2</div><div class="cm">3 sets each · RDLs, sumo squats, single-leg work</div></div>
+    <div>
+      <div class="ex-row fire"><div class="ex-n">1</div><div><div class="ex-name">Resistance Band RDLs <span class="bx i">Band</span></div><div class="ex-sets">3 × 15–20 reps · stand on band, hinge at hips, feel the stretch in hamstrings</div></div></div>
+      <div class="ex-row"><div class="ex-n">2</div><div><div class="ex-name">Reverse Lunges with Dumbbells <span class="bx ok">2kg DB</span></div><div class="ex-sets">3 × 12–15 reps each leg · hold one dumbbell at each shoulder</div></div></div>
+      <div class="ex-row"><div class="ex-n">3</div><div><div class="ex-name">Sumo Squats <span class="bx i">Band</span></div><div class="ex-sets">3 × 15–20 reps · wide stance on the band, hold handles at chest height, squat against the tension</div></div></div>
+      <div class="ex-row"><div class="ex-n">4</div><div><div class="ex-name">Single-Leg Romanian Deadlift <span class="bx new">Bodyweight or 2kg DB</span></div><div class="ex-sets">3 × 10–12 reps each leg · hold a wall for balance at first — added to round out the posterior chain work</div></div></div>
+    </div>
+    <div class="core-sep"><div class="core-sep-label">Core Finisher</div></div>
+    <div>
+      <div class="ex-row core"><div class="ex-n">C1</div><div><div class="ex-name">Plank High-to-Low</div><div class="ex-sets">3 × 10–12 reps · forearm to hand and back, keep hips still</div></div></div>
+      <div class="ex-row core"><div class="ex-n">C2</div><div><div class="ex-name">Mountain Climbers</div><div class="ex-sets">3 × 20 reps</div></div></div>
+      <div class="ex-row core"><div class="ex-n">C3</div><div><div class="ex-name">Crunches</div><div class="ex-sets">3 × 15–20 reps</div></div></div>
+      <div class="ex-row core"><div class="ex-n">C4</div><div><div class="ex-name">Leg Raises</div><div class="ex-sets">3 × 12–15 reps · lower legs slowly, don't let them drop</div></div></div>
+    </div>
+  </div>
+
+  <div class="nt ok" style="margin-bottom:16px">🎯 <strong>On the resistance band question —</strong> yes, sumo squats work well with a band. Step onto it with a wide stance, hold the ends or handles at chest/shoulder height, and squat down against the tension. Great for glutes and inner thighs, and safe for a beginner.</div>
+
+  <div class="div"></div>
+
+  <!-- FULL BODY HIIT -->
+  <div class="slbl">Day 5</div>
+  <div class="stit">Full Body —<br>Cardio, HIIT &amp; Abs.</div>
+  <div class="card">
+    <div class="ch dark"><div class="ct">Full Body HIIT + Abs</div><div class="cm">2 rounds · 30–40 sec work, 20 sec rest between exercises</div></div>
     <div style="padding:0 15px 6px">
       <div class="yoga-round">
-        <div class="yoga-round-hd"><span class="yoga-round-title">Pranayama · 12 min</span><span class="yoga-round-meta">Seated, eyes closed</span></div>
-        <div class="yoga-ex">Diaphragmatic breathing<span class="yoga-ex-time">3 min</span></div>
-        <div class="yoga-ex">Anulom Vilom (alternate nostril)<span class="yoga-ex-time">5 min</span></div>
-        <div class="yoga-ex">Bhramari (humming bee breath)<span class="yoga-ex-time">4 min</span></div>
+        <div class="yoga-round-hd"><span class="yoga-round-title">Round 1 of 2</span><span class="yoga-round-meta">30–40s work · 20s rest</span></div>
+        <div class="yoga-ex">Jumping Jacks <span style="font-size:10px;color:var(--ink-soft)">(step side-to-side if jumping feels like too much)</span><span class="yoga-ex-time">40s</span></div>
+        <div class="yoga-ex">Burpees <span style="font-size:10px;color:var(--ink-soft)">(step back instead of jumping back)</span><span class="yoga-ex-time">40s</span></div>
+        <div class="yoga-ex">Mountain Climbers<span class="yoga-ex-time">40s</span></div>
+        <div class="yoga-ex">Bear Hold with Shoulder Taps<span class="yoga-ex-time">40s</span></div>
+        <div class="yoga-ex">Incline Push-ups (stool/couch)<span class="yoga-ex-time">40s</span></div>
+        <div class="yoga-ex">Bicycle Crunches<span class="yoga-ex-time">40s</span></div>
       </div>
       <div class="yoga-round">
-        <div class="yoga-round-hd"><span class="yoga-round-title">Gentle Flow · 23 min</span><span class="yoga-round-meta">Hold each 30–45 sec, both sides</span></div>
-        <div class="yoga-ex">Cat-Cow → Child's Pose flow<span class="yoga-ex-time">3 min</span></div>
-        <div class="yoga-ex">Cobra Pose (Bhujangasana)<span class="yoga-ex-time">3 × 20 sec</span></div>
-        <div class="yoga-ex">Butterfly Pose (Baddha Konasana) — supports PCOD<span class="yoga-ex-time">2 min</span></div>
-        <div class="yoga-ex">Seated Wide-Leg Forward Fold<span class="yoga-ex-time">1 min</span></div>
-        <div class="yoga-ex">Bridge Pose, held longer<span class="yoga-ex-time">3 × 30 sec</span></div>
-        <div class="yoga-ex">Camel Pose (modified, hands on lower back)<span class="yoga-ex-time">2 × 20 sec</span></div>
-      </div>
-      <div class="yoga-round">
-        <div class="yoga-round-hd"><span class="yoga-round-title">Restorative Cool-down · 25 min</span><span class="yoga-round-meta">This is the most important part — don't rush it</span></div>
-        <div class="yoga-ex">Reclined Butterfly (Supta Baddha Konasana)<span class="yoga-ex-time">5 min</span></div>
-        <div class="yoga-ex">Reclined Twist, both sides<span class="yoga-ex-time">1.5 min each</span></div>
-        <div class="yoga-ex">Legs-Up-The-Wall (Viparita Karani)<span class="yoga-ex-time">8 min</span></div>
-        <div class="yoga-ex">Savasana with slow breath awareness<span class="yoga-ex-time">8 min</span></div>
+        <div class="yoga-round-hd"><span class="yoga-round-title">Round 2 of 2</span><span class="yoga-round-meta">Same order · 90s rest before you start</span></div>
+        <div class="yoga-ex">Jumping Jacks<span class="yoga-ex-time">40s</span></div>
+        <div class="yoga-ex">Burpees<span class="yoga-ex-time">40s</span></div>
+        <div class="yoga-ex">Mountain Climbers<span class="yoga-ex-time">40s</span></div>
+        <div class="yoga-ex">Bear Hold with Shoulder Taps<span class="yoga-ex-time">40s</span></div>
+        <div class="yoga-ex">Incline Push-ups (stool/couch)<span class="yoga-ex-time">40s</span></div>
+        <div class="yoga-ex">Bicycle Crunches<span class="yoga-ex-time">40s</span></div>
       </div>
     </div>
     <div class="cb" style="padding-top:4px">
-      <div class="nt ok">This session matters as much for stress and PCOD as the strength days do for the body — high stress directly affects hormonal balance. Treat this one as non-negotiable, not optional.</div>
+      <div class="nt w">Keep the jumping moves low-impact for now — soft knees, land quietly, swap to the step-back versions noted above whenever needed. Intensity will build naturally over the coming weeks without forcing full jumps early on.</div>
     </div>
   </div>
 
@@ -500,9 +535,9 @@ body{font-family:var(--sans);color:var(--ink);font-size:15px;line-height:1.7;pad
   <div class="card">
     <div class="ch"><div class="ct">Training notes</div></div>
     <div>
-      <div class="tr"><div class="trm">Hydration</div><div class="trd">Sip water through every session — don't wait until you're thirsty, especially on the bodyweight days.</div></div>
-      <div class="tr"><div class="trm">No high-impact</div><div class="trd">No jumps, no running-based moves for now. Everything here is designed to be joint-friendly while you build a base.</div></div>
-      <div class="tr"><div class="trm">Progression</div><div class="trd">Once 20 clean reps feel easy across all 3 sets, we'll add a harder variation of each move — not weight, just a tougher version.</div></div>
+      <div class="tr"><div class="trm">Hydration</div><div class="trd">Sip water through every session — don't wait until you're thirsty, especially on the HIIT day.</div></div>
+      <div class="tr"><div class="trm">Impact</div><div class="trd">Lower/Push/Back days stay joint-friendly by design. The only higher-impact moves are on Day 5 — and even those have low-impact versions noted right there.</div></div>
+      <div class="tr"><div class="trm">Progression</div><div class="trd">Once the top of a rep range feels easy across all 3 sets, we'll add a harder variation or increase resistance — not before.</div></div>
       <div class="tr"><div class="trm">Sleep</div><div class="trd">7:30am wake, 11pm sleep gives you a solid ~8.5 hrs — a real strength in this plan. Protect this window as training ramps up.</div></div>
     </div>
   </div>
@@ -568,7 +603,7 @@ body{font-family:var(--sans);color:var(--ink);font-size:15px;line-height:1.7;pad
     <div class="ch"><div class="ct">Progression watch-points</div></div>
     <div class="cb">
       Week 1–2: adherence and form over intensity — she's sedentary starting cold, expect soreness from the bodyweight days especially.<br>
-      Week 3–4: if 20 clean reps feel easy across all sets, progress exercise difficulty (not load) — e.g. incline push-up → standard push-up on knees.<br>
+      Week 3–4: once the top of the rep range feels easy across all sets, progress the movement (e.g. bodyweight squat → add a pause at the bottom) before increasing load — the 2kg dumbbells have limited headroom, so heavier dumbbells are worth budgeting for by month 2 if she's responding well.<br>
       Reassess at 4 weeks: weight trend, energy, stress/PCOD symptom check via WhatsApp, and whether whey is being tolerated well before deciding on phase 2 targets.
     </div>
   </div>
@@ -609,6 +644,17 @@ function updateNav() {
 }
 window.addEventListener('scroll', updateNav, { passive: true });
 updateNav();
+
+function printSection(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const styles = document.querySelector('style').outerHTML;
+  const w = window.open('', '_blank');
+  w.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Disha Garg</title>' + styles + '</head><body style="padding-bottom:0">' + el.outerHTML + '</body></html>');
+  w.document.close();
+  w.focus();
+  setTimeout(() => { w.print(); }, 400);
+}
 </script>
 </body>
 </html>
